@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#111315">
+<title>Продукты — Paradox Lab</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+<script>(function(){try{var t=localStorage.getItem('pl-theme');if(!t)t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<style>
+.products{padding:clamp(48px,7vw,80px) 0}
+.prod-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;grid-auto-rows:1fr;gap:18px}
+.pcard{border-radius:var(--radius);padding:28px;border:1px solid var(--line);position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:220px;transition:transform .3s,border-color .3s}
+.pcard:hover{transform:translateY(-4px)}
+.pcard.feature{grid-row:span 2;background:linear-gradient(155deg,rgba(var(--accent-rgb),.1),rgba(var(--accent-rgb),.02));border-color:var(--accent-dim);justify-content:flex-end}
+.pcard.feature::before{content:"";position:absolute;top:-40%;right:-20%;width:300px;height:300px;background:radial-gradient(circle,var(--accent-glow),transparent 65%);filter:blur(20px);opacity:.5}
+.pcard.feature:hover{border-color:rgba(var(--accent-rgb),.4)}
+.pcard.soon{background:var(--surface-1)}
+.pcard.soon:hover{border-color:var(--line-2)}
+.pcard .ptop{display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1}
+.pcard .picon{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;border:1px solid var(--line-2)}
+.pcard.feature .picon{background:var(--accent);border:0}
+.pcard.feature .picon svg{stroke:var(--on-accent)}
+.pcard.soon .picon{background:var(--surface-2)}
+.pcard.soon .picon svg{stroke:var(--muted-2)}
+.pcard .picon svg{width:23px;height:23px;fill:none;stroke-width:1.9}
+.status{font-family:'JetBrains Mono';font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:20px}
+.status.live{color:var(--accent);background:var(--accent-dim);border:1px solid var(--accent-dim)}
+.status.wait{color:var(--muted-2);background:var(--surface-2);border:1px solid var(--line)}
+.pcard .pbody{position:relative;z-index:1;margin-top:auto;padding-top:40px}
+.pcard.feature .pbody{padding-top:0}
+.pcard h3{font-size:24px;margin-bottom:9px;font-weight:600}
+.pcard.soon h3{color:var(--muted);font-size:19px}
+.pcard p{color:var(--muted);font-size:14.5px;line-height:1.5;max-width:36ch}
+.pcard.soon p{color:var(--muted-2);font-size:13.5px}
+.feature .flink{margin-top:18px;color:var(--accent);font-size:13.5px;font-weight:500;display:inline-flex;align-items:center;gap:7px;text-decoration:none}
+.feature .flink .arr{transition:transform .25s}
+.feature:hover .flink .arr{transform:translateX(4px)}
+.eco-note{margin-top:24px;display:flex;align-items:center;gap:10px;color:var(--muted-2);font-size:14px;font-family:'JetBrains Mono'}
+.eco-note .ln{flex:1;height:1px;background:var(--line)}
+
+/* showcase */
+.showcase{padding:clamp(60px,8vw,100px) 0;margin-top:clamp(40px,6vw,70px);background:linear-gradient(180deg,var(--panel-1),var(--panel-2));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.show-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}
+.screens{position:relative;display:flex;justify-content:center;gap:18px;perspective:1400px}
+.mini-phone{width:172px;height:352px;border-radius:30px;background:linear-gradient(160deg,var(--phone-1),var(--phone-2));padding:8px;flex-shrink:0;box-shadow:0 30px 60px -25px rgba(0,0,0,.8),0 0 0 1px var(--line);transition:transform .4s var(--ease)}
+.mini-phone .scr{width:100%;height:100%;border-radius:23px;background:var(--bg-3);overflow:hidden;border:1px solid var(--line);padding:18px 11px;display:flex;flex-direction:column;gap:9px}
+.mini-phone.a{transform:translateY(20px) rotateY(8deg)}
+.mini-phone.b{transform:translateY(-14px) rotateY(-4deg);z-index:2}
+.mini-phone:hover{transform:translateY(-6px) rotateY(0)}
+.ms-head{display:flex;align-items:center;gap:6px;font-family:'Space Grotesk';font-weight:600;font-size:10px;margin-bottom:4px}
+.ms-head .d{width:15px;height:15px;border-radius:5px;background:var(--accent-dim)}
+.ms-line{height:7px;border-radius:5px;background:var(--line)}
+.ms-line.w70{width:70%}.ms-line.w50{width:50%}.ms-line.w90{width:90%}
+.ms-box{background:var(--surface-3);border:1px solid var(--line);border-radius:11px;padding:10px;display:flex;flex-direction:column;gap:6px}
+.ms-box .num{font-family:'Space Grotesk';font-weight:700;font-size:19px;color:var(--accent)}
+.ms-box .cap{font-size:8px;color:var(--muted-2)}
+.ms-chip{font-family:'JetBrains Mono';font-size:7.5px;color:var(--accent);border:1px solid var(--accent-dim);border-radius:20px;padding:3px 7px;align-self:flex-start}
+.show-body h2{font-size:clamp(30px,4vw,46px);margin-bottom:8px;font-weight:600}
+.show-tag{font-family:'JetBrains Mono';font-size:12px;color:var(--accent);letter-spacing:.1em;margin-bottom:20px;display:block}
+.show-body>p{color:var(--muted);font-size:16.5px;line-height:1.6;margin-bottom:28px;max-width:46ch}
+.feat-list{list-style:none;margin-bottom:32px}
+.feat-list li{display:flex;align-items:center;gap:13px;padding:11px 0;border-bottom:1px solid var(--line);color:var(--text);font-size:15.5px;font-weight:450}
+.feat-list li:last-child{border-bottom:0}
+.feat-list .ck{width:24px;height:24px;border-radius:8px;background:var(--accent-dim);display:grid;place-items:center;flex-shrink:0}
+.feat-list .ck svg{width:13px;height:13px;stroke:var(--accent);fill:none;stroke-width:2.4}
+.gplay{display:inline-flex;align-items:center;gap:11px;padding:14px 22px;border-radius:13px;background:var(--surface-2);border:1px solid var(--line-2);color:var(--text);text-decoration:none;font-weight:500;font-size:15px;transition:.22s}
+.gplay:hover{background:var(--hover-1);transform:translateY(-2px)}
+.gplay svg{width:22px;height:22px}
+.gplay .sub{display:block;font-size:10.5px;color:var(--muted-2);font-family:'JetBrains Mono';letter-spacing:.06em}
+
+@media(max-width:960px){
+  .prod-grid{grid-template-columns:1fr 1fr}
+  .pcard.feature{grid-row:span 1;grid-column:span 2}
+  .show-grid{grid-template-columns:1fr;gap:48px}
+}
+@media(max-width:680px){
+  .prod-grid{grid-template-columns:1fr}
+  .pcard.feature{grid-column:span 1}
+  .screens{transform:scale(.9)}
+  .mini-phone.a,.mini-phone.b{transform:none}
+}
+</style>
+</head>
+<body>
+<div class="bg-field"></div>
+<div class="bg-grid"></div>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a href="index.html" class="brand"><span class="glyph"></span>Paradox Lab</a>
+    <div class="nav-links" id="navLinks">
+      <a href="author.html">Автор</a>
+      <a href="products.html" class="active">Продукты</a>
+      <a href="notes.html">Заметки</a>
+      <a href="contact.html" class="nav-cta">Связаться</a>
+    </div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Сменить тему" title="Сменить тему"><svg class="ic-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg><svg class="ic-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+    <button class="nav-toggle" id="navToggle" aria-label="Меню">☰</button>
+  </div>
+</nav>
+
+<main>
+<header class="page-head">
+  <div class="wrap reveal in">
+    <div class="crumb"><a href="index.html">Главная</a> / Продукты</div>
+    <h1>Экосистема инструментов</h1>
+    <p>Линейка карманных приложений для специалистов. Начинаем с одного — растём в полноценный набор инженерных инструментов.</p>
+  </div>
+</header>
+
+<section class="products">
+  <div class="wrap">
+    <div class="prod-grid">
+      <div class="pcard feature reveal">
+        <div class="ptop">
+          <span class="picon"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 11-12h-7z"/></svg></span>
+          <span class="status live">Скоро в Google Play</span>
+        </div>
+        <div class="pbody">
+          <h3>ПодборЛинии</h3>
+          <p>Помощник электрика для предварительного подбора автоматического выключателя и сечения кабеля. Быстрая ориентировочная оценка по параметрам линии — мощность, длина, материал, способ прокладки. Работает офлайн.</p>
+          <a href="#podborlinii" class="flink">Подробнее об инструменте <span class="arr">→</span></a>
+        </div>
+      </div>
+      <div class="pcard soon reveal" data-d="1">
+        <div class="ptop"><span class="picon"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9z"/></svg></span><span class="status wait">Скоро</span></div>
+        <div class="pbody"><h3>Следующий инструмент</h3><p>В разработке</p></div>
+      </div>
+      <div class="pcard soon reveal" data-d="2">
+        <div class="ptop"><span class="picon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span><span class="status wait">Скоро</span></div>
+        <div class="pbody"><h3>Следующий инструмент</h3><p>В разработке</p></div>
+      </div>
+      <div class="pcard soon reveal" data-d="1">
+        <div class="ptop"><span class="picon"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 4-5"/></svg></span><span class="status wait">Скоро</span></div>
+        <div class="pbody"><h3>Следующий инструмент</h3><p>В разработке</p></div>
+      </div>
+      <div class="pcard soon reveal" data-d="2">
+        <div class="ptop"><span class="picon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span><span class="status wait">Скоро</span></div>
+        <div class="pbody"><h3>Следующий инструмент</h3><p>В разработке</p></div>
+      </div>
+    </div>
+    <div class="eco-note reveal"><span>экосистема растёт</span><span class="ln"></span><span>v0.1 → ∞</span></div>
+  </div>
+</section>
+
+<section class="showcase" id="podborlinii">
+  <div class="wrap">
+    <div class="show-grid">
+      <div class="screens reveal">
+        <div class="mini-phone a">
+          <div class="scr">
+            <div class="ms-head"><span class="d"></span>Расчёт</div>
+            <div class="ms-line w90"></div><div class="ms-line w70"></div>
+            <div class="ms-box"><span class="ms-chip">АВТОМАТ</span><span class="num">C25</span><span class="cap">номинальный ток 25 А</span></div>
+            <div class="ms-line w50"></div><div class="ms-line w70"></div>
+          </div>
+        </div>
+        <div class="mini-phone b">
+          <div class="scr">
+            <div class="ms-head"><span class="d"></span>Кабель</div>
+            <div class="ms-box"><span class="ms-chip">СЕЧЕНИЕ</span><span class="num">4 мм²</span><span class="cap">медь · 21 А</span></div>
+            <div class="ms-line w90"></div><div class="ms-line w50"></div>
+            <div class="ms-box"><span class="ms-chip">СПРАВКА</span><span class="cap">ПУЭ · таблицы токов</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="show-body reveal" data-d="1">
+        <span class="show-tag">// флагманский инструмент</span>
+        <h2>ПодборЛинии</h2>
+        <p>Карманный помощник электрика. Введите параметры линии — и получите предварительный подбор автомата и сечения кабеля за секунды, прямо на объекте и без интернета.</p>
+        <ul class="feat-list">
+          <li><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Подбор автомата</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Подбор сечения кабеля</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Справочные данные</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Быстрый расчёт</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Работа офлайн</li>
+        </ul>
+        <a href="contact.html" class="gplay">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 3 20 12 4 21z" fill="var(--accent)"/></svg>
+          <span>Скоро в Google Play<span class="sub">EARLY ACCESS</span></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <a href="index.html" class="brand"><span class="glyph"></span>Paradox Lab</a>
+      <div class="foot-nav">
+        <a href="products.html">Продукты</a><a href="author.html">Автор</a><a href="notes.html">Заметки</a><a href="contact.html">Контакты</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span class="copyright">© 2026 Paradox Lab</span>
+      <div class="foot-links"><a href="privacy.html">Политика конфиденциальности</a><a href="terms.html">Пользовательское соглашение</a></div>
+    </div>
+  </div>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>

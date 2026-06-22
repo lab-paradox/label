@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#111315">
+<title>Paradox Lab — Инструменты для тех, кто работает руками и головой</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+<script>(function(){try{var t=localStorage.getItem('pl-theme');if(!t)t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<style>
+/* hero */
+.hero{padding:clamp(56px,8vw,104px) 0 clamp(64px,8vw,96px)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
+.hero h1{font-size:clamp(38px,5.6vw,68px);font-weight:600;margin-bottom:26px;max-width:14ch}
+.hero-sub{font-size:clamp(16.5px,1.9vw,19px);color:var(--muted);max-width:46ch;margin-bottom:34px;line-height:1.6}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:42px}
+.hero-feats{display:grid;grid-template-columns:1fr 1fr;gap:13px 30px;max-width:480px}
+.feat{display:flex;align-items:center;gap:11px;font-size:14.5px;color:var(--muted)}
+.feat .ck{width:21px;height:21px;border-radius:7px;background:var(--accent-dim);display:grid;place-items:center;flex-shrink:0}
+.feat .ck svg{width:12px;height:12px;stroke:var(--accent);stroke-width:2.4;fill:none}
+.phone-stage{position:relative;display:grid;place-items:center;min-height:560px}
+.phone-stage .halo{position:absolute;width:115%;height:115%;background:radial-gradient(circle at 50% 45%,var(--accent-glow),transparent 62%);filter:blur(40px);opacity:.55;animation:pulse 6s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:.65;transform:scale(1.05)}}
+.deco{position:absolute;border:1px solid var(--line-2);border-radius:14px;backdrop-filter:blur(6px);background:var(--surface-1)}
+.deco.d1{width:80px;height:80px;top:6%;right:2%;animation:float 7s ease-in-out infinite}
+.deco.d2{width:54px;height:54px;bottom:12%;left:-2%;border-radius:50%;animation:float 9s ease-in-out infinite reverse}
+.deco.dot{width:9px;height:9px;background:var(--accent);border-radius:50%;border:0;box-shadow:0 0 12px var(--accent);top:24%;left:6%;animation:float 5s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+
+/* about the lab */
+.about{padding:0 0 clamp(64px,9vw,110px);scroll-margin-top:90px}
+.about-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:60px;align-items:start}
+.about-body .sec-title{margin-bottom:26px}
+.about-body p{color:var(--muted);font-size:16.5px;line-height:1.7;margin-bottom:18px;max-width:54ch}
+.about-body p strong{color:var(--text);font-weight:550}
+.about-aside{display:flex;flex-direction:column;gap:13px}
+.principle{display:flex;gap:15px;align-items:flex-start;padding:20px 22px;border:1px solid var(--line);border-radius:var(--radius-s);background:var(--surface-1);transition:transform .3s var(--ease),border-color .3s,background .3s}
+.principle:hover{transform:translateX(5px);border-color:var(--accent-dim);background:rgba(var(--accent-rgb),.03)}
+.principle .pic{width:42px;height:42px;border-radius:12px;background:var(--accent-dim);display:grid;place-items:center;flex-shrink:0}
+.principle .pic svg{width:21px;height:21px;stroke:var(--accent);fill:none;stroke-width:1.8}
+.principle h4{font-family:'Space Grotesk';font-size:16px;font-weight:600;margin-bottom:4px;letter-spacing:-.01em}
+.principle p{color:var(--muted);font-size:13.5px;line-height:1.5}
+
+/* home products */
+.home-prod{padding:0 0 clamp(64px,9vw,110px);scroll-margin-top:90px}
+.hp-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:34px;flex-wrap:wrap}
+.hp-head .lead{font-family:'JetBrains Mono';font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2);text-decoration:none;transition:color .2s}
+.hp-head .lead:hover{color:var(--accent)}
+.hp-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.hp-card{position:relative;border:1px solid var(--line);border-radius:var(--radius);padding:30px;text-decoration:none;color:inherit;overflow:hidden;display:flex;flex-direction:column;min-height:236px;transition:transform .3s var(--ease),border-color .3s,background .3s}
+.hp-card.live{background:linear-gradient(155deg,rgba(var(--accent-rgb),.1),rgba(var(--accent-rgb),.02));border-color:var(--accent-dim)}
+.hp-card.live::before{content:"";position:absolute;top:-40%;right:-15%;width:280px;height:280px;background:radial-gradient(circle,var(--accent-glow),transparent 65%);filter:blur(20px);opacity:.5}
+.hp-card.live:hover{transform:translateY(-5px);border-color:rgba(var(--accent-rgb),.4)}
+.hp-card.soon{background:var(--surface-1)}
+.hp-card.soon:hover{transform:translateY(-5px);border-color:var(--line-2)}
+.hp-card .ptop{display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1;margin-bottom:auto}
+.hp-card .picon{width:48px;height:48px;border-radius:13px;display:grid;place-items:center}
+.hp-card.live .picon{background:var(--accent)}
+.hp-card.live .picon svg{stroke:var(--on-accent)}
+.hp-card.soon .picon{background:var(--surface-2);border:1px solid var(--line-2)}
+.hp-card.soon .picon svg{stroke:var(--muted-2)}
+.hp-card .picon svg{width:24px;height:24px;fill:none;stroke-width:1.9}
+.hp-status{font-family:'JetBrains Mono';font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:20px;white-space:nowrap}
+.hp-status.s-live{color:var(--accent);background:var(--accent-dim);border:1px solid var(--accent-dim)}
+.hp-status.s-wait{color:var(--muted-2);background:var(--surface-2);border:1px solid var(--line)}
+.hp-card h3{font-size:23px;margin:26px 0 9px;font-weight:600;position:relative;z-index:1}
+.hp-card.soon h3{color:var(--muted)}
+.hp-card p{color:var(--muted);font-size:14px;line-height:1.55;position:relative;z-index:1}
+.hp-card.soon p{color:var(--muted-2)}
+.hp-card .go{position:relative;z-index:1;color:var(--accent);font-size:13.5px;font-weight:500;display:flex;align-items:center;gap:7px;margin-top:18px}
+.hp-card .go .arr{transition:transform .25s}
+.hp-card.live:hover .go .arr{transform:translateX(4px)}
+
+@media(max-width:960px){
+  .hero-grid{grid-template-columns:1fr;gap:48px}
+  .phone-stage{min-height:auto;order:-1}
+  .about-grid{grid-template-columns:1fr;gap:40px}
+}
+@media(max-width:680px){
+  .hero-feats{grid-template-columns:1fr}
+  .hero-btns .btn{flex:1;justify-content:center}
+  .hp-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="bg-field"></div>
+<div class="bg-grid"></div>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a href="index.html" class="brand"><span class="glyph"></span>Paradox Lab</a>
+    <div class="nav-links" id="navLinks">
+      <a href="author.html">Автор</a>
+      <a href="products.html">Продукты</a>
+      <a href="notes.html">Заметки</a>
+      <a href="contact.html" class="nav-cta">Связаться</a>
+    </div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Сменить тему" title="Сменить тему"><svg class="ic-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg><svg class="ic-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+    <button class="nav-toggle" id="navToggle" aria-label="Меню">☰</button>
+  </div>
+</nav>
+
+<main>
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-left reveal in">
+        <span class="eyebrow">Независимая лаборатория · Android</span>
+        <h1>Инструменты для тех, кто работает <span class="hl">руками и головой</span></h1>
+        <p class="hero-sub">Paradox Lab — независимая разработка мобильных приложений для специалистов. Я создаю простые офлайн-инструменты, которые помогают профессионалам быстрее и увереннее принимать решения прямо на объекте — без лишних функций, рекламы и сбора данных.</p>
+        <div class="hero-btns">
+          <a href="#products" class="btn btn-primary">Наши продукты <span class="arr">→</span></a>
+          <a href="#about" class="btn btn-ghost">О лаборатории</a>
+        </div>
+        <div class="hero-feats">
+          <div class="feat"><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Работают офлайн</div>
+          <div class="feat"><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Ничего лишнего</div>
+          <div class="feat"><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Создано для специалистов</div>
+          <div class="feat"><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Честные расчёты</div>
+        </div>
+      </div>
+      <div class="phone-stage reveal in" data-d="2">
+        <div class="halo"></div>
+        <div class="deco d1"></div><div class="deco d2"></div><div class="deco dot"></div>
+        <div class="phone">
+          <div class="notch"></div>
+          <div class="screen">
+            <div class="app">
+              <div class="app-top">
+                <div class="app-logo"><span class="b"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 11-12h-7z"/></svg></span>ПодборЛинии</div>
+                <span class="app-pill">OFFLINE</span>
+              </div>
+              <div class="app-card">
+                <div class="lbl">Параметры линии</div>
+                <div class="app-row"><span class="k">Мощность</span><span class="v">7,5 кВт</span></div>
+                <div class="app-row"><span class="k">Напряжение</span><span class="v">380 В</span></div>
+                <div class="app-row"><span class="k">Длина</span><span class="v">45 м</span></div>
+                <div class="gbar"><i></i></div>
+              </div>
+              <div class="app-card">
+                <div class="lbl">Кабель</div>
+                <div class="app-row"><span class="k">Сечение</span><span class="v acc">4 мм²</span></div>
+                <div class="app-row"><span class="k">Ток нагрузки</span><span class="v">21 А</span></div>
+              </div>
+              <div class="app-result">
+                <div class="cap">Рекомендованный автомат</div>
+                <div class="big">C25</div>
+                <div class="cap">с запасом по току</div>
+              </div>
+              <div class="app-tabs"><span class="on"></span><span></span><span></span><span></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT THE LAB -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-body reveal">
+        <span class="eyebrow">О лаборатории</span>
+        <h2 class="sec-title">Независимая разработка<br>с одним принципом</h2>
+        <p><strong>Paradox Lab — это независимый разработчик, создающий нишевые инструменты для людей рабочих и инженерных профессий.</strong></p>
+        <p>Идея простая: профессионалу на объекте нужен быстрый, честный ответ, а не громоздкая программа с сотней функций. Поэтому каждый инструмент Paradox Lab делает одно дело — и делает его хорошо: работает без интернета, не отвлекает рекламой, не собирает данные и говорит на языке специалиста.</p>
+        <p>Это авторский проект. За каждым приложением — внимание к деталям, проверка расчётов и честность в том, что инструмент может, а чего не может.</p>
+        <a href="author.html" class="btn btn-ghost" style="margin-top:10px">Об авторе <span class="arr">→</span></a>
+      </div>
+      <div class="about-aside reveal" data-d="1">
+        <div class="principle">
+          <span class="pic"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg></span>
+          <div><h4>Работают офлайн</h4><p>Каждый инструмент рассчитан на работу без интернета — прямо на объекте.</p></div>
+        </div>
+        <div class="principle">
+          <span class="pic"><svg viewBox="0 0 24 24"><path d="M18.36 6.64A9 9 0 1 1 5.64 19.36M1 1l22 22"/></svg></span>
+          <div><h4>Ничего лишнего</h4><p>Без лишних функций — только то, что нужно для задачи.</p></div>
+        </div>
+        <div class="principle">
+          <span class="pic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg></span>
+          <div><h4>Честные расчёты</h4><p>Проверенные формулы и честность в том, что инструмент может, а чего не может.</p></div>
+        </div>
+        <div class="principle">
+          <span class="pic"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4l-6.3 6.3v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.1 2.1-2.1-.5-.5-2.1z"/></svg></span>
+          <div><h4>Создано для специалистов</h4><p>Язык, единицы и логика — как у профессионала, а не у массового пользователя.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="home-prod" id="products">
+  <div class="wrap">
+    <div class="hp-head reveal">
+      <div>
+        <span class="eyebrow" style="margin-bottom:14px">Продукты</span>
+        <h2 class="sec-title" style="margin-bottom:0">Что уже сделано</h2>
+      </div>
+      <a href="products.html" class="lead">все продукты →</a>
+    </div>
+    <div class="hp-grid">
+      <a href="products.html" class="hp-card live reveal" data-d="1">
+        <div class="ptop">
+          <span class="picon"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 11-12h-7z"/></svg></span>
+          <span class="hp-status s-live">Скоро в Google Play</span>
+        </div>
+        <h3>ПодборЛинии</h3>
+        <p>Помощник электрика для предварительного подбора автоматического выключателя и сечения кабеля. Быстрая ориентировочная оценка по параметрам линии — мощность, длина, материал, способ прокладки. Работает офлайн.</p>
+        <span class="go">Подробнее об инструменте <span class="arr">→</span></span>
+      </a>
+      <div class="hp-card soon reveal" data-d="2">
+        <div class="ptop">
+          <span class="picon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+          <span class="hp-status s-wait">Скоро</span>
+        </div>
+        <h3>Новые инструменты</h3>
+        <p>Линейка растёт. Новые инструменты для специалистов уже в разработке.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <a href="index.html" class="brand"><span class="glyph"></span>Paradox Lab</a>
+      <div class="foot-nav">
+        <a href="products.html">Продукты</a>
+        <a href="author.html">Автор</a>
+        <a href="notes.html">Заметки</a>
+        <a href="contact.html">Контакты</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span class="copyright">© 2026 Paradox Lab</span>
+      <div class="foot-links">
+        <a href="privacy.html">Политика конфиденциальности</a>
+        <a href="terms.html">Пользовательское соглашение</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>

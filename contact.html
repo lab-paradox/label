@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#111315">
+<title>Контакты — Paradox Lab</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+<script>(function(){try{var t=localStorage.getItem('pl-theme');if(!t)t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<style>
+.contact-wrap{padding:clamp(48px,7vw,90px) 0 clamp(40px,6vw,80px)}
+.cta-box{position:relative;border-radius:var(--radius-l);overflow:hidden;padding:clamp(48px,7vw,90px) clamp(28px,5vw,72px);text-align:center;background:linear-gradient(160deg,var(--panel-1),var(--panel-2));border:1px solid var(--line-2)}
+.cta-box::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 80% at 50% 0%,rgba(var(--accent-rgb),.14),transparent 60%);pointer-events:none}
+.cta-box .grid-o{position:absolute;inset:0;opacity:.4;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:48px 48px;-webkit-mask-image:radial-gradient(circle at 50% 0%,#000,transparent 70%);mask-image:radial-gradient(circle at 50% 0%,#000,transparent 70%)}
+.cta-box .eyebrow{justify-content:center;position:relative}
+.cta-box h2{font-size:clamp(32px,5vw,58px);font-weight:600;margin-bottom:18px;position:relative}
+.cta-box p{color:var(--muted);font-size:clamp(16px,2vw,18.5px);max-width:42ch;margin:0 auto 36px;position:relative}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative}
+
+.contact-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:24px}
+.cmeta{border:1px solid var(--line);border-radius:var(--radius);padding:24px;background:var(--surface-1);transition:border-color .3s,transform .3s}
+.cmeta:hover{border-color:var(--accent-dim);transform:translateY(-3px)}
+.cmeta .ic{width:42px;height:42px;border-radius:12px;background:var(--accent-dim);display:grid;place-items:center;margin-bottom:16px}
+.cmeta .ic svg{width:21px;height:21px;stroke:var(--accent);fill:none;stroke-width:1.8}
+.cmeta .lbl{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-2);margin-bottom:6px}
+.cmeta .val{font-size:15.5px;font-weight:500;color:var(--text)}
+@media(max-width:680px){.contact-meta{grid-template-columns:1fr}.cta-btns .btn{flex:1;justify-content:center}}
+</style>
+</head>
+<body>
+<div class="bg-field"></div>
+<div class="bg-grid"></div>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a href="index.html" class="brand"><span class="glyph"></span>Paradox Lab</a>
+    <div class="nav-links" id="navLinks">
+      <a href="author.html">Автор</a>
+      <a href="products.html">Продукты</a>
+      <a href="notes.html">Заметки</a>
+      <a href="contact.html" class="nav-cta active">Связаться</a>
+    </div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Сменить тему" title="Сменить тему"><svg class="ic-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg><svg class="ic-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+    <button class="nav-toggle" id="navToggle" aria-label="Меню">☰</button>
+  </div>
+</nav>
+
+<main>
+<header class="page-head">
+  <div class="wrap reveal in">
+    <div class="crumb"><a href="index.html">Главная</a> / Контакты</div>
+    <h1>Связаться с Paradox Lab</h1>
+  </div>
+</header>
+
+<section class="contact-wrap">
+  <div class="wrap">
+    <div class="cta-box reveal">
+      <div class="grid-o"></div>
+      <span class="eyebrow">Открыт к диалогу</span>
+      <h2>Есть идея или вопрос?</h2>
+      <p>Всегда открыт для обратной связи и профессионального общения.</p>
+      <div class="cta-btns">
+        <a href="mailto:paradoxlabtech@gmail.com" class="btn btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          Написать на email
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-meta">
+      <div class="cmeta reveal" data-d="1">
+        <span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+        <div class="lbl">Email</div>
+        <div class="val">paradoxlabtech@gmail.com</div>
+      </div>
+      <div class="cmeta reveal" data-d="2">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M21.5 4.3 2.5 11.6c-1 .4-1 1.8.1 2.1l4.8 1.5 1.8 5.6c.3.9 1.4 1 2 .3l2.6-2.6 4.9 3.6c.8.6 1.9.1 2-.8l3-15.4c.2-1-.8-1.8-2.2-1.2z"/></svg></span>
+        <div class="lbl">Telegram</div>
+        <div class="val">скоро</div>
+      </div>
+      <div class="cmeta reveal" data-d="3">
+        <span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+        <div class="lbl">Ответ</div>
+        <div class="val">обычно в течение дня</div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <a href="index.html" class="brand"><span class="glyph"></span>Paradox Lab</a>
+      <div class="foot-nav">
+        <a href="products.html">Продукты</a><a href="author.html">Автор</a><a href="notes.html">Заметки</a><a href="contact.html">Контакты</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span class="copyright">© 2026 Paradox Lab</span>
+      <div class="foot-links"><a href="privacy.html">Политика конфиденциальности</a><a href="terms.html">Пользовательское соглашение</a></div>
+    </div>
+  </div>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#111315">
+<title>Автор — Paradox Lab</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+<script>(function(){try{var t=localStorage.getItem('pl-theme');if(!t)t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<style>
+.author{padding:clamp(48px,7vw,84px) 0}
+.author-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center}
+.author-photo{position:relative;aspect-ratio:1;max-width:380px;border-radius:var(--radius-l);background:linear-gradient(160deg,var(--photo-1),var(--photo-2));border:1px solid var(--line-2);overflow:hidden;display:grid;place-items:center}
+.author-photo::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,rgba(var(--accent-rgb),.12),transparent 60%)}
+.author-photo .av{width:62%;height:62%;border-radius:50%;background:linear-gradient(160deg,var(--av-1),var(--av-2));border:1px solid var(--line-2);display:grid;place-items:center;position:relative;z-index:1}
+.author-photo .av svg{width:46%;height:46%;stroke:var(--muted-2);fill:none;stroke-width:1.4}
+.author-photo .ring{position:absolute;width:80%;height:80%;border:1px solid var(--accent-dim);border-radius:50%;z-index:0}
+.author-photo .frame-tag{position:absolute;bottom:18px;left:18px;font-family:'JetBrains Mono';font-size:11px;color:var(--accent);z-index:2;letter-spacing:.05em}
+.author-body p{color:var(--muted);font-size:17px;line-height:1.65;margin-bottom:18px;max-width:54ch}
+.author-body p strong{color:var(--text);font-weight:550}
+
+.mission{padding:clamp(60px,8vw,100px) 0;margin-top:clamp(40px,6vw,70px);background:linear-gradient(180deg,var(--panel-2),var(--panel-1));border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.mission::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 60% at 50% -10%,rgba(var(--accent-rgb),.08),transparent 60%);pointer-events:none}
+.mission-head{max-width:880px;margin:0 auto 56px;text-align:center}
+.mission-head h2{font-size:clamp(30px,4.8vw,56px);font-weight:600}
+.mission-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.mcard{background:var(--surface-1);border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px;transition:border-color .3s,transform .3s,background .3s}
+.mcard:hover{border-color:var(--accent-dim);transform:translateY(-4px);background:rgba(var(--accent-rgb),.03)}
+.mcard .ic{width:48px;height:48px;border-radius:14px;background:var(--accent-dim);display:grid;place-items:center;margin-bottom:22px}
+.mcard .ic svg{width:24px;height:24px;stroke:var(--accent);fill:none;stroke-width:1.8}
+.mcard h3{font-size:21px;margin-bottom:10px;font-weight:600}
+.mcard p{color:var(--muted);font-size:15px;line-height:1.55}
+
+@media(max-width:960px){
+  .author-grid{grid-template-columns:1fr;gap:48px}
+  .author-photo{margin:0 auto}
+  .mission-cards{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="bg-field"></div>
+<div class="bg-grid"></div>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a href="index.html" class="brand"><span class="glyph"></span>Paradox Lab</a>
+    <div class="nav-links" id="navLinks">
+      <a href="author.html" class="active">Автор</a>
+      <a href="products.html">Продукты</a>
+      <a href="notes.html">Заметки</a>
+      <a href="contact.html" class="nav-cta">Связаться</a>
+    </div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Сменить тему" title="Сменить тему"><svg class="ic-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg><svg class="ic-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+    <button class="nav-toggle" id="navToggle" aria-label="Меню">☰</button>
+  </div>
+</nav>
+
+<main>
+<header class="page-head">
+  <div class="wrap reveal in">
+    <div class="crumb"><a href="index.html">Главная</a> / Автор</div>
+    <h1>Кто стоит за Paradox Lab</h1>
+  </div>
+</header>
+
+<section class="author">
+  <div class="wrap">
+    <div class="author-grid">
+      <div class="author-photo reveal">
+        <div class="ring"></div>
+        <div class="av"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M5.5 21a6.5 6.5 0 0 1 13 0"/></svg></div>
+        <span class="frame-tag">// основатель</span>
+      </div>
+      <div class="author-body reveal" data-d="1">
+        <span class="eyebrow">Инди-разработка</span>
+        <p><strong>Paradox Lab — авторский проект одного разработчика.</strong></p>
+        <p>Я делаю инструменты, которые сам хотел бы иметь под рукой: простые, честные, работающие без лишнего. Каждый из них рождается из реальной задачи на объекте, а не из желания добавить ещё одну функцию.</p>
+        <p>Если приложение вам помогло или вы нашли неточность — напишите. Обратная связь делает следующие версии лучше.</p>
+        <a href="mailto:paradoxlabtech@gmail.com" class="btn btn-ghost" style="margin-top:6px">paradoxlabtech@gmail.com</a>
+        <div class="tags">
+          <span class="tag">Инди-разработка</span>
+          <span class="tag">Android</span>
+          <span class="tag">Офлайн-подход</span>
+          <span class="tag">Практическая польза</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mission">
+  <div class="wrap">
+    <div class="mission-head reveal">
+      <span class="eyebrow" style="justify-content:center">Миссия</span>
+      <h2>Технологии должны <span class="hl">экономить время</span>, а не отнимать его</h2>
+    </div>
+    <div class="mission-cards">
+      <div class="mcard reveal" data-d="1">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M4 12h16M4 6h16M4 18h10"/></svg></span>
+        <h3>Простота</h3>
+        <p>Никаких перегруженных интерфейсов. Только то, что нужно для решения задачи.</p>
+      </div>
+      <div class="mcard reveal" data-d="2">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6z"/></svg></span>
+        <h3>Надёжность</h3>
+        <p>Работа даже без подключения к интернету. Инструмент всегда под рукой на объекте.</p>
+      </div>
+      <div class="mcard reveal" data-d="3">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2v4m0 12v4m10-10h-4M6 12H2m15.07-5.07-2.83 2.83M9.76 14.24l-2.83 2.83m10.14 0-2.83-2.83M9.76 9.76 6.93 6.93"/></svg></span>
+        <h3>Практика</h3>
+        <p>Каждая функция должна решать реальную задачу специалиста, а не выглядеть красиво.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <a href="index.html" class="brand"><span class="glyph"></span>Paradox Lab</a>
+      <div class="foot-nav">
+        <a href="products.html">Продукты</a><a href="author.html">Автор</a><a href="notes.html">Заметки</a><a href="contact.html">Контакты</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span class="copyright">© 2026 Paradox Lab</span>
+      <div class="foot-links"><a href="privacy.html">Политика конфиденциальности</a><a href="terms.html">Пользовательское соглашение</a></div>
+    </div>
+  </div>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
