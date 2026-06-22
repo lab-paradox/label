@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#111315">
-<title>Автор — Paradox Lab</title>
+<title>Автор — Paradox-lab</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="styles.css">
 <script>(function(){try{var t=localStorage.getItem('pl-theme');if(!t)t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
@@ -16,7 +16,8 @@
 .author-photo .av{width:62%;height:62%;border-radius:50%;background:linear-gradient(160deg,var(--av-1),var(--av-2));border:1px solid var(--line-2);display:grid;place-items:center;position:relative;z-index:1}
 .author-photo .av svg{width:46%;height:46%;stroke:var(--muted-2);fill:none;stroke-width:1.4}
 .author-photo .ring{position:absolute;width:80%;height:80%;border:1px solid var(--accent-dim);border-radius:50%;z-index:0}
-.author-photo .frame-tag{position:absolute;bottom:18px;left:18px;font-family:'JetBrains Mono';font-size:11px;color:var(--accent);z-index:2;letter-spacing:.05em}
+.author-photo .photo-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+.author-photo .frame-tag{position:absolute;bottom:16px;left:16px;font-family:'JetBrains Mono';font-size:11px;color:var(--accent);z-index:2;letter-spacing:.05em;background:rgba(8,12,14,.55);padding:6px 11px;border-radius:9px;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
 .author-body p{color:var(--muted);font-size:17px;line-height:1.65;margin-bottom:18px;max-width:54ch}
 .author-body p strong{color:var(--text);font-weight:550}
 
@@ -45,7 +46,7 @@
 
 <nav id="nav">
   <div class="nav-in">
-    <a href="index.html" class="brand"><span class="glyph"></span>Paradox Lab</a>
+    <a href="index.html" class="brand"><span class="glyph"></span>Paradox-lab</a>
     <div class="nav-links" id="navLinks">
       <a href="author.html" class="active">Автор</a>
       <a href="products.html">Продукты</a>
@@ -61,7 +62,7 @@
 <header class="page-head">
   <div class="wrap reveal in">
     <div class="crumb"><a href="index.html">Главная</a> / Автор</div>
-    <h1>Кто стоит за Paradox Lab</h1>
+    <h1>Кто стоит за Paradox-lab</h1>
   </div>
 </header>
 
@@ -69,15 +70,15 @@
   <div class="wrap">
     <div class="author-grid">
       <div class="author-photo reveal">
-        <div class="ring"></div>
-        <div class="av"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M5.5 21a6.5 6.5 0 0 1 13 0"/></svg></div>
+        <img src="founder.png" alt="Олег — основатель Paradox-lab" class="photo-img" onerror="this.style.display='none'">
         <span class="frame-tag">// основатель</span>
       </div>
       <div class="author-body reveal" data-d="1">
-        <span class="eyebrow">Инди-разработка</span>
-        <p><strong>Paradox Lab — авторский проект одного разработчика.</strong></p>
-        <p>Я делаю инструменты, которые сам хотел бы иметь под рукой: простые, честные, работающие без лишнего. Каждый из них рождается из реальной задачи на объекте, а не из желания добавить ещё одну функцию.</p>
-        <p>Если приложение вам помогло или вы нашли неточность — напишите. Обратная связь делает следующие версии лучше.</p>
+        <span class="eyebrow">Об авторе</span>
+        <p><strong>Меня зовут Олег, я основатель Paradox-lab.</strong></p>
+        <p>Я начинал не как программист, а как человек, которому в работе не хватало простого, честного инструмента под рукой. Так появилась идея делать приложения, которые я сам хотел бы иметь на объекте: быстрые, понятные, работающие без интернета.</p>
+        <p>Paradox-lab — авторский проект. За каждым приложением — внимание к деталям, проверка расчётов и честность в том, что инструмент может, а чего не может. Я сам тестирую каждый инструмент и отвечаю за результат.</p>
+        <p>Если приложение вам помогло или вы нашли неточность — напишите. Обратная связь от практиков делает следующие версии лучше.</p>
         <a href="mailto:paradoxlabtech@gmail.com" class="btn btn-ghost" style="margin-top:6px">paradoxlabtech@gmail.com</a>
         <div class="tags">
           <span class="tag">Инди-разработка</span>
@@ -120,13 +121,13 @@
 <footer>
   <div class="wrap">
     <div class="foot-grid">
-      <a href="index.html" class="brand"><span class="glyph"></span>Paradox Lab</a>
+      <a href="index.html" class="brand"><span class="glyph"></span>Paradox-lab</a>
       <div class="foot-nav">
         <a href="products.html">Продукты</a><a href="author.html">Автор</a><a href="notes.html">Заметки</a><a href="contact.html">Контакты</a>
       </div>
     </div>
     <div class="foot-bottom">
-      <span class="copyright">© 2026 Paradox Lab</span>
+      <span class="copyright">© 2026 Paradox-lab</span>
       <div class="foot-links"><a href="privacy.html">Политика конфиденциальности</a><a href="terms.html">Пользовательское соглашение</a></div>
     </div>
   </div>

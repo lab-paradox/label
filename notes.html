@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#111315">
-<title>Заметки и разработки — Paradox Lab</title>
+<title>Заметки и разработки — Paradox-lab</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="styles.css">
 <script>(function(){try{var t=localStorage.getItem('pl-theme');if(!t)t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
@@ -19,7 +19,10 @@
 .acard .thumb .num{position:absolute;top:16px;left:18px;font-family:'JetBrains Mono';font-size:12px;color:var(--accent);z-index:1;letter-spacing:.08em}
 .acard .ainner{padding:24px;display:flex;flex-direction:column;flex:1}
 .acard .meta{font-family:'JetBrains Mono';font-size:11px;color:var(--muted-2);letter-spacing:.06em;margin-bottom:12px}
-.acard h3{font-size:18.5px;line-height:1.3;margin-bottom:14px;font-weight:600}
+.acard h3{font-size:18.5px;line-height:1.3;margin-bottom:10px;font-weight:600}
+.acard .excerpt{color:var(--muted);font-size:13.5px;line-height:1.55;margin-bottom:16px}
+.acard .thumb .tic{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:1}
+.acard .thumb .tic svg{width:40px;height:40px;stroke:var(--accent);fill:none;stroke-width:1.5;opacity:.92}
 .acard .read{margin-top:auto;color:var(--accent);font-size:13.5px;font-weight:500;display:flex;align-items:center;gap:7px}
 .acard:hover .read .arr{transform:translateX(3px)}
 .acard .read .arr{transition:transform .25s}
@@ -53,7 +56,7 @@
 
 <nav id="nav">
   <div class="nav-in">
-    <a href="index.html" class="brand"><span class="glyph"></span>Paradox Lab</a>
+    <a href="index.html" class="brand"><span class="glyph"></span>Paradox-lab</a>
     <div class="nav-links" id="navLinks">
       <a href="author.html">Автор</a>
       <a href="products.html">Продукты</a>
@@ -77,33 +80,33 @@
 <section class="notes">
   <div class="wrap">
     <div class="notes-grid">
-      <a href="#" class="acard reveal" data-d="1">
-        <div class="thumb"><span class="num">01</span></div>
+      <a href="note-offline.html" class="acard reveal" data-d="1">
+        <div class="thumb"><span class="num">01</span><span class="tic"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg></span></div>
         <div class="ainner">
-          <div class="meta">ОФЛАЙН · 6 МИН</div>
-          <h3>Почему офлайн-приложения до сих пор важны</h3>
+          <div class="meta">ОФЛАЙН · 2 МИН</div>
+          <h3>Почему наши инструменты работают офлайн</h3>
+          <p class="excerpt">На объекте интернет есть не всегда. Подвал, щитовая, новостройка без покрытия — именно там чаще всего нужен быстрый расчёт.</p>
           <span class="read">Читать <span class="arr">→</span></span>
         </div>
       </a>
-      <a href="#" class="acard reveal" data-d="2">
-        <div class="thumb"><span class="num">02</span></div>
+      <a href="note-honest.html" class="acard reveal" data-d="2">
+        <div class="thumb"><span class="num">02</span><span class="tic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span></div>
         <div class="ainner">
-          <div class="meta">РАЗРАБОТКА · 9 МИН</div>
-          <h3>Как проектировались расчёты в ПодборЛинии</h3>
+          <div class="meta">ПОДХОД · 2 МИН</div>
+          <h3>Почему инструмент честно говорит о своих границах</h3>
+          <p class="excerpt">Калькулятор легко сделать так, чтобы он всегда выдавал уверенный ответ. Сложнее — честно предупредить, когда задача выходит за рамки.</p>
           <span class="read">Читать <span class="arr">→</span></span>
         </div>
       </a>
-      <a href="#" class="acard reveal" data-d="3">
-        <div class="thumb"><span class="num">03</span></div>
+      <a href="note-focus.html" class="acard reveal" data-d="3">
+        <div class="thumb"><span class="num">03</span><span class="tic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span></div>
         <div class="ainner">
-          <div class="meta">МНЕНИЕ · 7 МИН</div>
-          <h3>Что не так с большинством профессиональных приложений</h3>
+          <div class="meta">ФИЛОСОФИЯ · 2 МИН</div>
+          <h3>Один инструмент — одна задача</h3>
+          <p class="excerpt">Многие программы пытаются делать всё сразу и превращаются в перегруженный комбайн. Paradox-lab идёт другим путём.</p>
           <span class="read">Читать <span class="arr">→</span></span>
         </div>
       </a>
-    </div>
-    <div class="notes-foot reveal">
-      <a href="#" class="btn btn-ghost">Все публикации <span class="arr">→</span></a>
     </div>
   </div>
 </section>
@@ -128,13 +131,13 @@
 <footer>
   <div class="wrap">
     <div class="foot-grid">
-      <a href="index.html" class="brand"><span class="glyph"></span>Paradox Lab</a>
+      <a href="index.html" class="brand"><span class="glyph"></span>Paradox-lab</a>
       <div class="foot-nav">
         <a href="products.html">Продукты</a><a href="author.html">Автор</a><a href="notes.html">Заметки</a><a href="contact.html">Контакты</a>
       </div>
     </div>
     <div class="foot-bottom">
-      <span class="copyright">© 2026 Paradox Lab</span>
+      <span class="copyright">© 2026 Paradox-lab</span>
       <div class="foot-links"><a href="privacy.html">Политика конфиденциальности</a><a href="terms.html">Пользовательское соглашение</a></div>
     </div>
   </div>
